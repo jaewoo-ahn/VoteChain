@@ -10,7 +10,7 @@ const Nav = () => {
     },
     {
       name: "page2",
-      link: "/page2",
+      link: "/insert",
     },
     {
       name: "page3",
@@ -19,7 +19,7 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="flex justify-between bg-[rgba(0,0,0,0.5)] p-4 fixed top-0 w-screen mb-20 z-10 rounded-b-lg  backdrop-invert backdrop-opacity-10">
+    <nav className="flex justify-between bg-[rgba(0,0,0,0.5)] p-4  w-screen  rounded-b-lg  backdrop-invert backdrop-opacity-10">
       <div className="flex flex-col">
         <p>TITLE</p>
       </div>

@@ -6,7 +6,7 @@ const Main = () => {
 
   return (
     <div>
-      <div className="mt-24 w-screen flex justify-center items-center p-20 bg-slate-600">
+      <div className=" w-screen flex justify-center items-center p-20 bg-slate-600">
         Banner
       </div>
       <div
