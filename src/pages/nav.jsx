@@ -19,7 +19,7 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="flex justify-between bg-blue-900 p-4 fixed w-screen mb-20 z-10 rounded-b-lg">
+    <nav className="flex justify-between bg-[rgba(0,0,0,0.5)] p-4 fixed top-0 w-screen mb-20 z-10 rounded-b-lg  backdrop-invert backdrop-opacity-10">
       <div className="flex flex-col">
         <p>TITLE</p>
       </div>
