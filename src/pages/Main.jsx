@@ -1,5 +1,4 @@
 import React from "react";
-import useAxios from "../hooks/custom_axios";
 
 const Main = () => {
   const memberArray = [
@@ -20,6 +19,7 @@ const Main = () => {
       image: "/assets/images/jaeyoun.jpg",
     },
   ];
+
   return (
     <div className="pt-8">
       <div
