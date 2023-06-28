@@ -9,7 +9,12 @@ const Nav = () => {
 
   return (
     <nav className="flex justify-between bg-white p-4 fixed w-screen mb-20 z-10 rounded-b-lg items-center ">
-      <div className="flex items-center">
+      <div
+        className="flex items-center cursor-pointer"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <div className="w-12 ml-10">
           <img src="/assets/images/logoimage.png" alt="logo" />
         </div>
@@ -42,7 +47,12 @@ const Nav = () => {
                 setNavTab(0);
               }}
             >
-              <p className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg">
+              <p
+                className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg"
+                onClick={() => {
+                  navigate("/createVote");
+                }}
+              >
                 새 투표 만들기
               </p>
               <p className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg">
