@@ -25,7 +25,7 @@ const Nav = () => {
       <div className="flex items-center">
         <div>
           <p
-            className="font-bold bg-gray-200 w-36 h-12 flex items-center justify-center rounded-md cursor-pointer"
+            className="font-bold  w-36 h-12 flex items-center justify-center rounded-md cursor-pointer hover:text-[#aa9df9]"
             onMouseEnter={() => {
               setNavTab(1);
             }}
@@ -63,7 +63,7 @@ const Nav = () => {
         </div>
         <div>
           <p
-            className="ml-4 font-bold bg-gray-200 w-36 h-12 flex items-center justify-center rounded-md cursor-pointer"
+            className="ml-4 font-bold w-36 h-12 flex items-center justify-center rounded-md cursor-pointer hover:text-[#aa9df9] "
             onMouseEnter={() => {
               setNavTab(2);
             }}
@@ -75,7 +75,7 @@ const Nav = () => {
           </p>
           {navTab === 2 && (
             <div
-              className="absolute bg-white w-40 ml-4 rounded-lg"
+              className="absolute bg-white w-40 ml-8 rounded-lg"
               onMouseEnter={() => {
                 setNavTab(2);
               }}
@@ -95,7 +95,7 @@ const Nav = () => {
       </div>
       <div className="flex items-center">
         <LuVote size={50} className="mr-6" />
-        <FaWallet size={40} />
+        <FaWallet size={40} className="mr-6" />
       </div>
     </nav>
   );
