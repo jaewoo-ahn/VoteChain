@@ -45,11 +45,7 @@ const Main = () => {
       </div>
 
       <div className="w-screen">
-        <img
-          src="/assets/images/description.png"
-          className="w-[100%]"
-          alt="description"
-        />
+        <img src="/assets/images/description.png" className="w-[100%]" />
       </div>
       <div className="flex h-[80%] py-20">
         <img
@@ -94,11 +90,7 @@ const Main = () => {
                 <p className="text-[#3e8ae6] font-bold text-5xl pb-4">{e.id}</p>
                 <p className="font-bold pb-4">{e.name}</p>
                 <div className="rounded-full  ">
-                  <img
-                    src={e.image}
-                    className="rounded-full"
-                    alt="personalpicture"
-                  />
+                  <img src={e.image} className="rounded-full" />
                 </div>
                 <p className="font-bold pb-4">직책</p>
                 <p className="font-bold pb-4">담당업무</p>

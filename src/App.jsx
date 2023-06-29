@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import {Nav, Main, CreateVote, Page3, Footer} from "./pages";
+import {Nav, Main, CreateVote, VoteList, Footer} from "./pages";
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/CreateVote" element={<CreateVote />} />
-        <Route path="/page3" element={<Page3 />} />
+        <Route path="/voteList" element={<VoteList />} />
       </Routes>
       <Footer />
     </div>

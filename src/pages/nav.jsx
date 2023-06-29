@@ -8,7 +8,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="flex justify-between bg-white p-4 fixed w-screen mb-20 z-10 rounded-b-lg items-center ">
+    <nav className="flex justify-between bg-white p-4 fixed w-screen mb-20 z-10 rounded-b-lg items-center drop-shadow-md	">
       <div
         className="flex items-center cursor-pointer"
         onClick={() => {
@@ -55,7 +55,12 @@ const Nav = () => {
               >
                 새 투표 만들기
               </p>
-              <p className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] ">
+              <p
+                className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] "
+                onClick={() => {
+                  navigate("/voteList");
+                }}
+              >
                 투표 리스트
               </p>
             </div>
@@ -83,9 +88,6 @@ const Nav = () => {
                 setNavTab(0);
               }}
             >
-              <p className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] ">
-                내가 만든 투표
-              </p>
               <p className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] ">
                 개인정보 수정
               </p>
