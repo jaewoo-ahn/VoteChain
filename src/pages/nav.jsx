@@ -48,14 +48,14 @@ const Nav = () => {
               }}
             >
               <p
-                className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg"
+                className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] "
                 onClick={() => {
                   navigate("/createVote");
                 }}
               >
                 새 투표 만들기
               </p>
-              <p className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg">
+              <p className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] ">
                 투표 리스트
               </p>
             </div>
@@ -83,10 +83,10 @@ const Nav = () => {
                 setNavTab(0);
               }}
             >
-              <p className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg">
+              <p className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] ">
                 내가 만든 투표
               </p>
-              <p className="p-4 cursor-pointer hover:bg-gray-200 rounded-lg">
+              <p className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] ">
                 개인정보 수정
               </p>
             </div>
