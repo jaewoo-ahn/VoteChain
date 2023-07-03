@@ -5,7 +5,7 @@ const VoteList = () => {
   return (
     <div className="p-20 ">
       <div
-        className="mt-10 flex flex-col justify-center items-center  rounded-lg"
+        className="mt-10 flex flex-col justify-center items-center  rounded-lg bg-gray-200"
         drop-shadow-md
       >
         <p className="mt-14 mb-10 px-20 py-4 border-sky-500 border bg-white">
