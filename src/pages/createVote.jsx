@@ -68,6 +68,8 @@ const CreateVote = () => {
             </div>
             <div className="flex flex-col">
               <input type="date" className="border" />
+              <p>투표후보자</p>
+              <input type="text" className="border" />
               <button>생성하기</button>
             </div>
           </div>

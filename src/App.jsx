@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react";
 import {Route, Routes} from "react-router-dom";
 import {Nav, Main, CreateVote, VoteList, Footer} from "./pages";
 
@@ -7,7 +8,7 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/CreateVote" element={<CreateVote />} />
+        <Route path="/createVote" element={<CreateVote />} />
         <Route path="/voteList" element={<VoteList />} />
       </Routes>
       <Footer />
