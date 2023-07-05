@@ -14,39 +14,39 @@ const VoteList = ({ account }) => {
   const [pollList_3, setPollList_3] = useState([]);
 
   const getPoll = async () => {
-    const response_1 = await contract.methods
-      .getMyVotedAll("0xa17bccd61b839c7808bcc1090751d3aa91d9ffdc")
-      .call();
-    console.log("response_1 : " + response_1);
-    setPollList(response_1);
+    try {
+      const response_1 = await contract.methods.getMyVotedAll(account).call();
+      console.log("response_1 : " + response_1);
+      setPollList(response_1);
+    } catch (error) {
+      console.error(error);
+    }
   };
   const getPoll_2 = async () => {
-    const response_2 = await contract.methods
-      .getRegardingUserPolls("0xa17bccd61b839c7808bcc1090751d3aa91d9ffdc")
-      .call();
+    try {
+      const response_2 = await contract.methods
+        .getRegardingUserPolls(account)
+        .call();
 
-    console.log("response_2 : " + response_2);
-    console.log("account : " + account);
-    setPollList_2(response_2);
+      console.log("response_2 : " + response_2);
+      console.log("account : " + account);
+      setPollList_2(response_2);
+    } catch (error) {
+      console.error(error);
+    }
   };
   const getPoll_3 = async () => {
-    const response_3 = await contract.methods
-      .getMadeVote("0xa17bccd61b839c7808bcc1090751d3aa91d9ffdc")
-      .call();
+    const response_3 = await contract.methods.getMadeVote(account).call();
 
     console.log("response_3 : " + response_3);
     setPollList_3(response_3);
   };
 
   useEffect(() => {
-    getPoll_2();
-  }, [pollList_2]);
-  useEffect(() => {
     getPoll();
-  }, [pollList]);
-  useEffect(() => {
     getPoll_3();
-  }, [pollList_3]);
+    getPoll_2();
+  }, []);
 
   return (
     <div className="p-20 ">
