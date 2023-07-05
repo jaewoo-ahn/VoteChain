@@ -12,21 +12,17 @@ export default function VoteCarousel({ pollList }) {
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {pollList.map(
-        (
-          list,
-          index // 변수명 수정 (methods -> method)
-        ) => (
-          <SwiperSlide key={index}>
-            <div className="bg-blue-400 w-[20rem] h-[20rem] rounded-lg">
-              <li>
-                <div>제목: {list.title}</div>
-                <div>{list.context}</div>
-              </li>
-            </div>
-          </SwiperSlide>
-        )
-      )}
+      {pollList.map((list, index) => (
+        <SwiperSlide key={index}>
+          <div className="bg-bule-400  h-48 bg-white rounded-lg">
+            <li>
+              <div>제목: {list.title}</div>
+              <div>{list.context}</div>
+              <div>{list.regardingUsers}</div>
+            </li>
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }

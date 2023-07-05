@@ -2,7 +2,7 @@ import React from "react";
 
 const Main = () => {
   const memberArray = [
-    {id: "01", name: "YOUMIN HA", image: "/assets/images/youmin.jpg"},
+    { id: "01", name: "YOUMIN HA", image: "/assets/images/youmin.jpg" },
     {
       id: "02",
       name: "AHN JAEWOO",
@@ -24,7 +24,7 @@ const Main = () => {
     <div className="pt-8">
       <div
         className="flex flex-col justify-center items-start h-screen bg-cover p-12"
-        style={{backgroundImage: "url('/assets/images/background.png')"}}
+        style={{ backgroundImage: "url('/assets/images/background.png')" }}
       >
         <h1 className="text-white text-7xl">
           BlockChain voting system <br />

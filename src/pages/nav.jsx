@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router";
-import {LuVote} from "react-icons/lu";
-import {FaWallet} from "react-icons/fa";
-import {LoginModal} from "../components";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { LuVote } from "react-icons/lu";
+import { FaWallet } from "react-icons/fa";
+import { LoginModal } from "../components";
 import Web3 from "web3";
 
 const Nav = () => {

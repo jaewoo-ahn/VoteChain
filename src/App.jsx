@@ -25,17 +25,9 @@ const App = () => {
     }
   }
 
-  const getPoll = async () => {
-    const response = await contract.methods.getAllPoll().call();
-    console.log("response : " + response);
-
-    setMethods(response);
-  };
-
   useEffect(() => {
-    getPoll();
     connect();
-  }, []);
+  }, [account]);
 
   return (
     <div className="App">
@@ -52,7 +44,7 @@ const App = () => {
             />
           }
         />
-        <Route path="/voteList" element={<VoteList />} />
+        <Route path="/voteList" element={<VoteList account={account} />} />
       </Routes>
       <Footer />
     </div>

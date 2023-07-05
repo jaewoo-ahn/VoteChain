@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0xDaB5fd9a04777019B1c37cA2974C1Da39DE51176";
+export const CONTRACT_ADDRESS = "0x72FC80a0C18260e182Cb6751A871a708010E308D";
 export const CONTRACT_ABI = [
   {
     inputs: [],
@@ -253,7 +253,13 @@ export const CONTRACT_ABI = [
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "address",
+        name: "_user",
+        type: "address",
+      },
+    ],
     name: "getVoteResults",
     outputs: [
       {
@@ -394,9 +400,9 @@ export const CONTRACT_ABI = [
         type: "uint256",
       },
       {
-        internalType: "string",
+        internalType: "address",
         name: "_email",
-        type: "string",
+        type: "address",
       },
     ],
     name: "voting",
