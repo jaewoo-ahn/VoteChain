@@ -9,6 +9,14 @@ const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
 const CreateVote = ({ account, methods, setMethods }) => {
   const [isTab, setIsTab] = useState("agenda");
+
+  // 타임스탬프로 변환
+  function Unix_timestampConv(_time) {
+    let time = Math.floor(new Date(_time).getTime() / 1000);
+    console.log("time : " + time);
+    return time;
+  }
+
   async function sendAgenda(e) {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -16,15 +24,13 @@ const CreateVote = ({ account, methods, setMethods }) => {
     const title_a = data.get("title_a");
     const context_a = data.get("context_a");
     const endTime_a = data.get("endTime_a");
-
+    console.log("endTime_a" + endTime_a);
     let time = Unix_timestampConv(endTime_a);
-
     // let time = 12345;
+    console.log(time);
 
-    let canVoted_a = [];
-    canVoted_a.push(data.get("regardingUsers_a"));
-    let elective_a = [];
-    canVoted_a.push(data.get("elective_a"));
+    let canVoted_a = Array.from(data.getAll("regardingUsers_a"));
+    let elective_a = Array.from(data.getAll("elective_a"));
     try {
       await contract.methods
         .makeANewPoll(title_a, context_a, 1, elective_a, time, canVoted_a)
@@ -34,13 +40,6 @@ const CreateVote = ({ account, methods, setMethods }) => {
     }
   }
 
-  // 타임스탬프로 변환
-  function Unix_timestampConv(_time) {
-    let time = Math.floor(_time / 1000);
-    console.log("time : " + time);
-    return time;
-  }
-
   async function sendElection(e) {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -48,18 +47,18 @@ const CreateVote = ({ account, methods, setMethods }) => {
     const title = data.get("title");
     const context = data.get("context");
 
-    // const endTime = data.get("endTime_a");
+    const endTime = data.get("endTime_a");
 
-    // let time = Unix_timestampConv(endTime);
-    let time = 12345;
+    let time = Unix_timestampConv(endTime);
+    console.log(time);
+    // let time = 12345;
 
+    let canVoted = Array.from(data.getAll("regardingUsers"));
     let elective = [];
-    let canVoted = [];
-    canVoted.push(data.get("regardingUsers"));
 
     try {
       await contract.methods
-        .makeANewPoll(title, context, 1, elective, time, canVoted)
+        .makeANewPoll(title, context, 0, elective, time, canVoted)
         .send({ from: account, to: CONTRACT_ADDRESS });
     } catch (error) {
       console.error(error);
