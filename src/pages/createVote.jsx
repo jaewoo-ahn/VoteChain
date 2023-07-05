@@ -67,12 +67,12 @@ const CreateVote = ({ account, methods, setMethods }) => {
 
   return (
     <div
-      className=" w-screen h-screen bg-cover bg-center flex  justify-center items-center"
+      className=" w-screen  h-full bg-cover bg-center flex  justify-center items-center"
       style={{
-        backgroundImage: "url('/assets/images/space.jpg')",
+        backgroundImage: "url('/assets/images/jelly_with_sea.jpg')",
       }}
     >
-      <div className="bg-white w-[80%] h-[80%]">
+      <div className="bg-white w-[80%] h-[80%] ">
         <div className="flex ">
           <div
             className="w-[50%] border-solid border-b-2	py-4 flex justify-center "
@@ -92,30 +92,33 @@ const CreateVote = ({ account, methods, setMethods }) => {
           </div>
         </div>
         {isTab === "agenda" && (
-          <div className="flex flex-row justify-center items-center">
+          <div className="flex flex-row justify-center items-center m-28 p-28  rounded-2xl  bg-neutral-300">
             <form onSubmit={sendAgenda}>
               <div className="w-[50%]">
-                <p>선출 주제</p>
+                <p className="mt-2">선출 주제</p>
                 <input
                   type="text"
-                  className="border"
+                  className="border m-4"
                   name="title_a"
                   placeholder="ex) 우리반 반장 뽑기 "
                 />
-                <p>상세 내용</p>
-                <input type="text" name="context_a" className="border" />
-                <p>투표 참가자</p>
-                <input type="regardingUsers_a" className="border" />
-                <input type="regardingUsers_a" className="border" />
-                <p>후보자</p>
-                <input type="text" name="elective_a" className="border" />
-                <input type="text" name="elective_a" className="border" />
-                <p>투표 기한</p>
-                <div className="flex flex-col">
-                  <input type="date" name="endTime_a" className="border" />
-                  <button type="submit">생성하기</button>
-                </div>
+                <p className="mt-2">상세 내용</p>
+                <input type="text" name="context_a" className="border m-4" />
+                <p className="mt-2">투표 참가자</p>
+                <input type="regardingUsers_a" className="border m-4" />
+                <input type="regardingUsers_a" className="border m-4" />
+                <p className="mt-2">후보자</p>
+                <input type="text" name="elective_a" className="border m-4" />
+                <input type="text" name="elective_a" className="border m-4" />
+                <p className="mt-2">투표 기한</p>
+                <input type="date" name="endTime_a" className="border m-4" />
               </div>
+              <button
+                type="submit"
+                className="bg-purple-400 p-3 w-28 rounded-2xl text-gray-50"
+              >
+                생성하기
+              </button>
             </form>
           </div>
         )}
@@ -138,7 +141,9 @@ const CreateVote = ({ account, methods, setMethods }) => {
               <p>투표 기한</p>
               <div className="flex flex-col">
                 <input type="date" name="endTime" className="border" />
-                <button type="submit">생성하기</button>
+                <button type="submit" className="bg-purple-600 p-3 w-28">
+                  생성하기
+                </button>
               </div>
             </form>
           </div>

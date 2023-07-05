@@ -13,22 +13,23 @@ const VoteList = ({ account }) => {
   const [pollList_2, setPollList_2] = useState([]);
   const [pollList_3, setPollList_3] = useState([]);
 
-  const getPoll = async () => {
-    try {
-      const response_1 = await contract.methods.getMyVotedAll(account).call();
-      console.log("response_1 : " + response_1);
-      setPollList(response_1);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const getPoll = async () => {
+  //   console.log(contract);
+  //   try {
+  //     const response_1 = await contract.methods.getMyVotedAll(account).call();
+  //     console.log("response_1 : " + response_1);
+  //     setPollList(response_1);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   const getPoll_2 = async () => {
     try {
       const response_2 = await contract.methods
         .getRegardingUserPolls(account)
         .call();
 
-      console.log("response_2 : " + response_2);
+      console.log(response_2);
       console.log("account : " + account);
       setPollList_2(response_2);
     } catch (error) {
@@ -38,12 +39,12 @@ const VoteList = ({ account }) => {
   const getPoll_3 = async () => {
     const response_3 = await contract.methods.getMadeVote(account).call();
 
-    console.log("response_3 : " + response_3);
+    console.log(response_3);
     setPollList_3(response_3);
   };
 
   useEffect(() => {
-    getPoll();
+    // getPoll();
     getPoll_3();
     getPoll_2();
   }, []);
@@ -58,19 +59,20 @@ const VoteList = ({ account }) => {
         <p className=" text-sky-400  mt-14 mb-10 px-20 py-4 border-sky-500 border rounded-lg ">
           참가 할 투표
         </p>
-        <div className="  flex items-center ">
+
+        <div className=" w-[80%] h-[80%] flex items-center mb-20">
           <VoteCarousel pollList={pollList_2} />
         </div>
         <p className="  text-sky-400  mt-14 mb-10 px-20 py-4 border-sky-500 border rounded-lg ">
           내가 참가한 투표
         </p>
-        <div className=" flex items-center mb-20">
+        <div className=" w-[80%] h-[80%] flex items-center mb-20">
           <VoteCarousel pollList={pollList} />
         </div>
         <p className="  text-sky-400  mb-10 px-20 py-4 border-sky-500 border  rounded-lg">
           내가 만든 투표
         </p>
-        <div className=" flex items-center mb-20">
+        <div className=" w-[80%] h-[80%] flex items-center mb-20">
           <VoteCarousel pollList={pollList_3} />
         </div>
       </div>

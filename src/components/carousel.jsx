@@ -1,10 +1,14 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useEffect } from "react";
 // Import Swiper styles
 import "swiper/css";
 
 export default function VoteCarousel({ pollList }) {
+  useEffect(() => {
+    console.log(pollList);
+  }, [pollList]);
+
   return (
     <Swiper
       spaceBetween={60}
@@ -14,7 +18,7 @@ export default function VoteCarousel({ pollList }) {
     >
       {pollList.map((list, index) => (
         <SwiperSlide key={index}>
-          <div className="bg-bule-400  h-48 bg-white rounded-lg">
+          <div className="bg-red-400 w-[20rem] h-[20rem] rounded-lg">
             <li>
               <div>제목: {list.title}</div>
               <div>{list.context}</div>

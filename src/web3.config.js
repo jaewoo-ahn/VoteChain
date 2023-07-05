@@ -1,73 +1,6 @@
 export const CONTRACT_ADDRESS = "0x03BfC9B9462F709DD8aa0da0245E43776A86f0d2";
 export const CONTRACT_ABI = [
   {
-    inputs: [
-      {
-        internalType: "string",
-        name: "_title",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_context",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_voteType",
-        type: "uint256",
-      },
-      {
-        internalType: "string[]",
-        name: "_elective",
-        type: "string[]",
-      },
-      {
-        internalType: "uint256",
-        name: "_endTime",
-        type: "uint256",
-      },
-      {
-        internalType: "address[]",
-        name: "_regardingUsers",
-        type: "address[]",
-      },
-    ],
-    name: "makeANewPoll",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "pollNumber",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_voteNumber",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_votedNumber",
-        type: "uint256",
-      },
-      {
-        internalType: "address",
-        name: "_email",
-        type: "address",
-      },
-    ],
-    name: "voting",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "getAllPoll",
     outputs: [
@@ -408,6 +341,73 @@ export const CONTRACT_ABI = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_title",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_context",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_voteType",
+        type: "uint256",
+      },
+      {
+        internalType: "string[]",
+        name: "_elective",
+        type: "string[]",
+      },
+      {
+        internalType: "uint256",
+        name: "_endTime",
+        type: "uint256",
+      },
+      {
+        internalType: "address[]",
+        name: "_regardingUsers",
+        type: "address[]",
+      },
+    ],
+    name: "makeANewPoll",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "pollNumber",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_voteNumber",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_votedNumber",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_email",
+        type: "address",
+      },
+    ],
+    name: "voting",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
 ];
