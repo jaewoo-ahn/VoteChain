@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../web3.config";
+import { useEffect } from "react";
 import Web3 from "web3";
 
 const web3 = new Web3(window.ethereum);
 var { ethers } = require("ethers");
-const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-
+// let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+let contract = new web3.eth.Contract(
+  CONTRACT_ABI,
+  web3.utils.toChecksumAddress(CONTRACT_ADDRESS)
+);
 const CreateVote = ({ account, methods, setMethods }) => {
   const [isTab, setIsTab] = useState("agenda");
 
@@ -20,7 +24,8 @@ const CreateVote = ({ account, methods, setMethods }) => {
   async function sendAgenda(e) {
     e.preventDefault();
     const data = new FormData(e.target);
-
+    console.log("account" + typeof account);
+    console.log("account" + account);
     const title_a = data.get("title_a");
     const context_a = data.get("context_a");
     const endTime_a = data.get("endTime_a");
@@ -31,10 +36,21 @@ const CreateVote = ({ account, methods, setMethods }) => {
 
     let canVoted_a = Array.from(data.getAll("regardingUsers_a"));
     let elective_a = Array.from(data.getAll("elective_a"));
+    console.log("title : " + title_a);
+    console.log("context : " + context_a);
+
+    console.log("regardingUsers_a : " + canVoted_a);
+    console.log("elective_a : " + elective_a);
     try {
       await contract.methods
         .makeANewPoll(title_a, context_a, 1, elective_a, time, canVoted_a)
         .send({ from: account, to: CONTRACT_ADDRESS });
+      //string calldata _title,
+      //string calldata _context,
+      //uint _voteType,
+      //string[] memory _elective,
+      //uint _endTime,
+      //address[] memory _regardingUsers
     } catch (error) {
       console.error(error);
     }
@@ -43,18 +59,23 @@ const CreateVote = ({ account, methods, setMethods }) => {
   async function sendElection(e) {
     e.preventDefault();
     const data = new FormData(e.target);
-
+    console.log("account" + account);
     const title = data.get("title");
     const context = data.get("context");
 
-    const endTime = data.get("endTime_a");
+    const endTime = data.get("endTime");
 
     let time = Unix_timestampConv(endTime);
     console.log(time);
     // let time = 12345;
 
     let canVoted = Array.from(data.getAll("regardingUsers"));
+
     let elective = [];
+    console.log("title : " + title);
+    console.log("context : " + context);
+    console.log("canVoted : " + canVoted);
+    console.log("elective : " + elective);
 
     try {
       await contract.methods
@@ -64,18 +85,30 @@ const CreateVote = ({ account, methods, setMethods }) => {
       console.error(error);
     }
   }
+  async function voting() {
+    try {
+      await contract.methods
+        .voting("929301239860", 1, "0xa17BCCD61B839c7808BCC1090751D3aa91D9fFdc")
+        .send({ from: account, to: CONTRACT_ADDRESS });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // useEffect(() => {
+  //   voting();
+  // }, []);
 
   return (
     <div
-      className=" w-screen  h-full bg-cover bg-center flex  justify-center items-center"
-      style={{
-        backgroundImage: "url('/assets/images/jelly_with_sea.jpg')",
-      }}
+      className="flex flex-col justify-center items-center  rounded-lg bg-gray-200"
+      drop-shadow-md
+      style={{ backgroundImage: "url('/assets/images/jelly_with_sea.png')" }}
     >
-      <div className="bg-white w-[80%] h-[80%] ">
+      <div className="w-[80%] h-[80%] ">
         <div className="flex ">
           <div
-            className="w-[50%] border-solid border-b-2	py-4 flex justify-center "
+            className="w-[50%] text-white  mt-48 border-solid border-b-2	py-4 flex justify-center text-2xl"
             onClick={() => {
               setIsTab("agenda");
             }}
@@ -83,7 +116,7 @@ const CreateVote = ({ account, methods, setMethods }) => {
             선출 제안
           </div>
           <div
-            className="w-[50%] border-solid border-b-2 py-4 flex justify-center"
+            className="w-[50%] text-white mt-48 border-solid border-b-2 py-4 flex text-2xl  justify-center"
             onClick={() => {
               setIsTab("election");
             }}
@@ -92,7 +125,7 @@ const CreateVote = ({ account, methods, setMethods }) => {
           </div>
         </div>
         {isTab === "agenda" && (
-          <div className="flex flex-row justify-center items-center m-28 p-28  rounded-2xl  bg-neutral-300">
+          <div className="flex flex-row justify-center items-center m-28 p-28  rounded-2xl   bg-teal-100">
             <form onSubmit={sendAgenda}>
               <div className="w-[50%]">
                 <p className="mt-2">선출 주제</p>
@@ -105,14 +138,25 @@ const CreateVote = ({ account, methods, setMethods }) => {
                 <p className="mt-2">상세 내용</p>
                 <input type="text" name="context_a" className="border m-4" />
                 <p className="mt-2">투표 참가자</p>
-                <input type="regardingUsers_a" className="border m-4" />
-                <input type="regardingUsers_a" className="border m-4" />
+                <input
+                  type="text"
+                  name="regardingUsers_a"
+                  className="border m-4"
+                />
+                <input
+                  type="text"
+                  name="regardingUsers_a"
+                  className="border m-4"
+                />
                 <p className="mt-2">후보자</p>
                 <input type="text" name="elective_a" className="border m-4" />
                 <input type="text" name="elective_a" className="border m-4" />
-                <p className="mt-2">투표 기한</p>
-                <input type="date" name="endTime_a" className="border m-4" />
+                <div className="flex flex-col">
+                  <p className="mt-2">투표 기한</p>
+                  <input type="date" name="endTime_a" className="border m-4" />
+                </div>
               </div>
+
               <button
                 type="submit"
                 className="bg-purple-400 p-3 w-28 rounded-2xl text-gray-50"
@@ -123,25 +167,37 @@ const CreateVote = ({ account, methods, setMethods }) => {
           </div>
         )}
         {isTab === "election" && (
-          <div className="flex flex-row justify-center items-center">
+          <div className="flex flex-row justify-center items-center  m-28 p-28 rounded-2xl   bg-teal-100">
             <form onSubmit={sendElection}>
               <div className="w-[50%] ">
-                <p>안건 주제</p>
+                <p className="mt-2">안건 주제</p>
                 <input
                   type="text"
-                  className="border"
+                  className="border m-4"
                   name="title"
                   placeholder="ex) 시험 금지법"
                 />
-                <p>상세 내용</p>
-                <input type="text" name="context" className="border" />
-                <p>투표 참가자</p>
-                <input type="text" name="regardingUsers" className="border" />
+                <p className="mt-2">상세 내용</p>
+                <input type="text" name="context" className="border m-4" />
+                <p className="mt-2">투표 참가자</p>
+                <input
+                  type="text"
+                  name="regardingUsers"
+                  className="border m-4"
+                />
+                <input
+                  type="text"
+                  name="regardingUsers"
+                  className="border m-4"
+                />
               </div>
-              <p>투표 기한</p>
-              <div className="flex flex-col">
-                <input type="date" name="endTime" className="border" />
-                <button type="submit" className="bg-purple-600 p-3 w-28">
+              <p className="mt-2">투표 기한</p>
+              <input type="date" name="endTime" className="border m-4" />
+              <div>
+                <button
+                  type="submit"
+                  className="bg-purple-400 p-3 w-28 rounded-2xl text-gray-50"
+                >
                   생성하기
                 </button>
               </div>

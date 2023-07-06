@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { Nav, Main, CreateVote, VoteList, Footer } from "./pages";
+import { Nav, Main, CreateVote, Footer } from "./pages";
+
+import GetMadeVote from "./pages/getMadeVote";
+import GetRegardingUserPolls from "./pages/getRegardingUserPolls";
+import GetMyVotedAll from "./pages/getMyVotedAll";
 import { Route, Routes } from "react-router-dom";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "./web3.config";
 import Web3 from "web3";
@@ -17,6 +21,7 @@ const App = () => {
           method: "eth_requestAccounts",
         });
         setAccount(res[0]);
+        console.log("account app : " + account);
       } catch (err) {
         console.error(err);
       }
@@ -34,17 +39,19 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/CreateVote" element={<CreateVote account={account} />} />
         <Route
-          path="/CreateVote"
-          element={
-            <CreateVote
-              account={account}
-              methods={methods}
-              setMethods={setMethods}
-            />
-          }
+          path="/getMadeVote"
+          element={<GetMadeVote account={account} />}
         />
-        <Route path="/voteList" element={<VoteList account={account} />} />
+        <Route
+          path="/getMyVotedAll"
+          element={<GetMyVotedAll account={account} />}
+        />
+        <Route
+          path="/getRegardingUserPolls"
+          element={<GetRegardingUserPolls account={account} />}
+        />
       </Routes>
       <Footer />
     </div>

@@ -5,7 +5,10 @@ import { useEffect } from "react";
 import "swiper/css";
 
 export default function VoteCarousel({ pollList }) {
+  const listArray = pollList || [];
+
   useEffect(() => {
+    console.log("pollList");
     console.log(pollList);
   }, [pollList]);
 
@@ -16,13 +19,15 @@ export default function VoteCarousel({ pollList }) {
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {pollList.map((list, index) => (
+      {listArray.map((list, index) => (
         <SwiperSlide key={index}>
-          <div className="bg-red-400 w-[20rem] h-[20rem] rounded-lg">
+          <div className="bg-red-300 w-[20rem] h-[20rem] rounded-lg">
             <li>
+              <div>번호: {list.number}</div>
               <div>제목: {list.title}</div>
               <div>{list.context}</div>
               <div>{list.regardingUsers}</div>
+              <div>votetype: {list.votetype}</div>
             </li>
           </div>
         </SwiperSlide>

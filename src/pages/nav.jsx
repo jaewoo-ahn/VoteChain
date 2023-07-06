@@ -85,10 +85,26 @@ const Nav = () => {
                 <p
                   className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] "
                   onClick={() => {
-                    navigate("/voteList");
+                    navigate("/getRegardingUserPolls");
                   }}
                 >
-                  투표 리스트
+                  투표 하기
+                </p>
+                <p
+                  className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] "
+                  onClick={() => {
+                    navigate("/getMyVotedAll");
+                  }}
+                >
+                  투표 결과
+                </p>
+                <p
+                  className="p-4 cursor-pointer hover:bg-gray-100 rounded-lg hover:text-[#aa9df9] "
+                  onClick={() => {
+                    navigate("/getMadeVote");
+                  }}
+                >
+                  내가 만든 투표
                 </p>
               </div>
             )}
