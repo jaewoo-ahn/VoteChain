@@ -2,7 +2,7 @@ import React from "react";
 
 const Main = () => {
   const memberArray = [
-    { id: "01", name: "YOUMIN HA", image: "/assets/images/youmin.jpg" },
+    {id: "01", name: "YOUMIN HA", image: "/assets/images/youmin.jpg"},
     {
       id: "02",
       name: "AHN JAEWOO",
@@ -23,22 +23,23 @@ const Main = () => {
   return (
     <div className="pt-8">
       <div
-        className="flex flex-col justify-center items-start h-screen bg-cover p-12"
-        style={{ backgroundImage: "url('/assets/images/background.png')" }}
+        className="flex flex-col justify-center items-start h-screen bg-cover p-28"
+        style={{backgroundImage: "url('/assets/images/background2.png')"}}
       >
-        <h1 className="text-white text-7xl">
-          BlockChain voting system <br />
+        <h1 className="bg-gradient-to-r from-red-500 to-purple-500 text-transparent bg-clip-text text-6xl pb-2.5 ">
+          BlockChain
+          <br /> voting system
         </h1>
-        <p className="text-white font-bold py-6 text-3xl">
+        <p className="text-black font-bold py-6 text-3xl">
           Vote Chain의 투표시스템으로 보다 안전
           <br />
           안전하고 투명한 투표를 경험해보세요.
         </p>
         <div className="">
-          <button className="bg-white py-2 px-4 rounded-full border-black border-2 hover:bg-sky-700 hover:text-white">
+          <button className="bg-gradient-to-r from-red-500 to-purple-500 py-2 px-4 rounded-full text-white hover:bg-sky-700 hover:text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
             더 알아보기
           </button>
-          <button className="bg-white py-2 px-4 rounded-full ml-2 border-black border-2 hover:bg-sky-700 hover:text-white">
+          <button className="bg-gradient-to-r from-red-500 to-purple-500 py-2 px-4 rounded-full ml-2 text-white hover:bg-sky-700 hover:text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
             투표하러 가기
           </button>
         </div>
@@ -74,7 +75,7 @@ const Main = () => {
             Vote Chain을 통해 보다 안전하고 투명한 투표문화를 만들어 나갈 수
             있습니다.
           </p>
-          <button className="py-2 px-4 bg-[#3e8ae6] text-white border-white rounded-full">
+          <button className="py-2 px-4 bg-[#3e8ae6] text-white border-white rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
             구축시작{" "}
           </button>
         </div>
